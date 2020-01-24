@@ -110,14 +110,66 @@ export class UserResolver {
   @Mutation(() => Boolean)
   async register(
     @Arg("email") email: string,
-    @Arg("password") password: string
+    @Arg("password") password: string,
+    @Arg("name") name : string,
+    @Arg("cellPhone") cellPhone : string,
+    @Arg("DPI") DPI : string,
+    @Arg("customerType") customerType : string,
+    @Arg("verificationLVL") verificationLVL : string,
+    @Arg("address") address : string,
+    @Arg("bank") bank : string,
+    @Arg("bankAccountNumber") bankAccountNumber : string,
+    @Arg("bankAccountName") bankAccountName : string,
+    @Arg("taxID") taxID : string,
+    @Arg("taxIDName") taxIDName : string,
+    @Arg("taxIDAddress") taxIDAddress : string,
+    @Arg("USDBalance") USDBalance : number,
+    @Arg("BTCBalance") BTCBalance : number,
+    @Arg("BTCAddress") BTCAddress : string,
+    @Arg("securityQuestion1") securityQuestion1 : string,
+    @Arg("securityQuestion2") securityQuestion2 : string,
+    @Arg("securityAnswer1") securityAnswer1 : string,
+    @Arg("securityAnswer2") securityAnswer2 : string,
+    @Arg("photoDPI") photoDPI : string,
+    @Arg("photoAddress") photoAddress : string,
+    @Arg("withdrawLimitBTC") withdrawLimitBTC : string,
+    @Arg("depositLimitUSD") depositLimitUSD : string,
+    @Arg("WithdrawalLimitUSD") WithdrawalLimitUSD : string,
+    @Arg("status") status : number
+    
   ) {
     const hashedPassword = await hash(password, 12);
 
     try {
       await User.insert({
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        name,
+        cellPhone,
+        DPI,
+        customerType,
+        verificationLVL,
+        address,
+        bank,
+        bankAccountNumber,
+        bankAccountName,
+        taxID,
+        taxIDName,
+        taxIDAddress,
+        USDBalance,
+        BTCBalance,
+        BTCAddress,
+        securityQuestion1,
+        securityQuestion2,
+        securityAnswer1 ,
+        securityAnswer2 ,
+        photoDPI,
+        photoAddress,
+        withdrawLimitBTC,
+        depositLimitUSD,
+        WithdrawalLimitUSD,
+        status,
+        
       });
     } catch (err) {
       console.log(err);
